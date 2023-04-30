@@ -1,98 +1,116 @@
-from numbers import Real
+from numbers import Rational
+from copy import deepcopy
+from fractions import Fraction
 from matrixlib.exceptions import *
 
 class Matrix:
 
-    def __init__(self, rows, cols):
-        self.rows = rows
-        self.cols = cols
-        self.matrix = [[0 for i in range(cols)] for j in range(rows)]
+    def __init__(self, __rows, __cols):
+        self.__rows = __rows
+        self.__cols = __cols
+        self.__matrix = [[0 for i in range(__cols)] for j in range(__rows)]
 
-    def get_item(self, row = None, col = None):
-        if row != None and (row < 0 or row >= self.rows):
+    def __getitem__(self, row = None, col = None):
+        if row != None and (row < 0 or row >= self.__rows):
             raise InvalidDimension
-        if col != None and (col < 0 or col >= self.cols):
+        if col != None and (col < 0 or col >= self.__cols):
             raise InvalidDimension
         if row != None and col != None:
-            return self.matrix[row][col]
+            return self.__matrix[row][col]
         elif row != None:
-            return self.matrix[row]
+            return self.__matrix[row]
         elif col != None:
-            return [self.matrix[i][col] for i in range(self.rows)]
+            return [[self.__matrix[i][col]] for i in range(self.__rows)]
         else:
-            return self.matrix
+            return self.__matrix
 
-    def set_item(self, value, row = None, col = None):
-        if row != None and (row < 0 or row >= self.rows):
+    def __setitem__(self, value, row = None, col = None):
+        if row != None and (row < 0 or row >= self.__rows):
             raise InvalidDimension
-        if col != None and (col < 0 or col >= self.cols):
+        if col != None and (col < 0 or col >= self.__cols):
             raise InvalidDimension
         if row != None and col != None:
-            if isinstance(value, Real):
-                self.matrix[row][col] = value
+            if isinstance(value, Rational):
+                self.__matrix[row][col] = value
                 return
             else:
                 raise TypeError
         if not isinstance(value, list):
             raise TypeError
+        if row == None and col == None:
+            if len(value) != self.__rows:
+                raise InvalidDimension
+            for i in range(len(value)):
+                if len(value[i]) != self.__cols:
+                    raise InvalidDimension
+            if not all(isinstance(value[i][j], Rational) for i in range(self.__rows) for j in range(self.__cols)):
+                raise TypeError
+            self.__matrix = value
+            return
         if row != None:
-            if len(value) == self.cols:
-                self.matrix[row] = value
+            if not all(isinstance(value[i], Rational) for i in range(len(value))):
+                raise TypeError
+            if len(value) == self.__cols:
+                self.__matrix[row] = value
                 return
             else:
                 raise InvalidDimension
-        elif col != None:
-            if len(value) == self.rows:
-                for i in range(len(value)):
-                    self.matrix[i][col] = value[i]
+        if col != None:
+            if not all(isinstance(value[i], list) for i in range(len(value))):
+                raise TypeError
+            if not all(isinstance(value[i][j], Rational) for i in range(len(value)) for j in range(len(value[0]))):
+                raise TypeError
+            for i in range(len(value)):
+                if len(value[0]) != len(value[i]):
+                    raise InvalidDimension
+            if len(value) == self.__rows:
+                for i in range(self.__rows):
+                    self.__matrix[i][col] = value[i][0]
                 return
-            else:
-                raise InvalidDimension
-        else:
-            if len(value) == self.rows and len(value[0]) == self.cols:
-                if all(isinstance(value[i][j], Real) for i in range(self.rows) for j in range(self.cols)):
-                    self.matrix = value
-                    return
-                else:
-                    raise TypeError
             else:
                 raise InvalidDimension
 
-    def del_item(self, row = None, col = None):
-        if row != None and (row < 0 or row >= self.rows):
+    def __delitem__(self, row = None, col = None):
+        if row != None and (row < 0 or row >= self.__rows):
             raise InvalidDimension
-        if col != None and (col < 0 or col >= self.cols):
+        if col != None and (col < 0 or col >= self.__cols):
             raise InvalidDimension
         if row != None and col != None:
             raise ValueError
-        if row != None:
-            self.rows -= 1
-            del(self.matrix[row])
-        elif col != None:
-            self.cols -= 1
-            for i in range(self.rows):
-                del self.matrix[i][col]
+        if row != None and self.__rows != 1:
+            self.__rows -= 1
+            del self.__matrix[row]
+        elif col != None and self.__cols != 1:
+            self.__cols -= 1
+            for i in range(self.__rows):
+                del self.__matrix[i][col]
         else:
-            del(self.matrix)
+            raise ValueError
 
-    def cont_item(self, value):
-        if isinstance(value, Real):
-            return any([self.matrix[i][j] == value for i in range(self.rows) for j in range(self.cols)])
+    def __contains__(self, value):
+        if isinstance(value, Rational):
+            return any(self.__matrix[i][j] == value for i in range(self.__rows) for j in range(self.__cols))
         else:
             raise TypeError
 
-    def eq_item(self, other):
-        if isinstance(other, Matrix) and self.rows == other.rows and self.cols == other.cols:
-            for i in range(self.rows):
-                for j in range(self.cols):
-                    if self.matrix[i][j] != other[i][j]:
+    def __eq__(self, other):
+        if isinstance(other, Matrix) and self.__rows == other.__rows and self.__cols == other.__cols:
+            for i in range(self.__rows):
+                for j in range(self.__cols):
+                    if self.__matrix[i][j] != other[i][j]:
                         return False
             return True
-        else:
+        if len(other) != self.__rows:
             return False
+        for i in range(len(other)):
+            if len(other[i]) != self.__cols:
+                return False
+        for i in range(self.__rows):
+            for j in range(self.__cols):
+                if self.__matrix[i][j] != other[i][j]:
+                    return False
+        return True
 
-    def repr_mat(self):
-        return str("\n".join(["| " + str(i)[1:-1].replace(",","") + " |" for i in self.matrix]))
-
-    def print_mat(self):
-        print(self.repr_mat())
+    def __repr__(self):
+        top = max(len(str(self.__matrix[i][j])) for i in range(self.__rows) for j in range(self.__cols))
+        return "\n".join(["| " + " ".join([str(i).ljust(top) for i in self.__matrix[j]]) + " |" for j in range(self.__rows)])

@@ -6,3 +6,6 @@ class InvalidDimension(Exception):
 
 class ZeroDeterminant(Exception):
     pass
+
+class NoSolution(Exception):
+    pass
