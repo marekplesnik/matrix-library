@@ -61,6 +61,7 @@
 ### Changelog
 
 * 0.2.0
+    * Updated import, added docstrings
     * Updated README
     * Added Matrix, Operations classes
     

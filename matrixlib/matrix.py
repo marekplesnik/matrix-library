@@ -1,19 +1,33 @@
 from numbers import Rational
-from copy import deepcopy
-from fractions import Fraction
-from matrixlib.exceptions import *
+from .exceptions import *
 
 class Matrix:
 
-    def __init__(self, __rows, __cols):
+    def __init__(self, __rows: int, __cols: int):
+        """
+        Initializes the Matrix class
+        Args:
+            __rows: number of matrix's rows
+            __cols: number of matrix's columns
+        Returns:
+            None
+        """
         self.__rows = __rows
         self.__cols = __cols
         self.__matrix = [[0 for i in range(__cols)] for j in range(__rows)]
 
     def __getitem__(self, row = None, col = None):
-        if row != None and (row < 0 or row >= self.__rows):
-            raise InvalidDimension
-        if col != None and (col < 0 or col >= self.__cols):
+        """
+        Getter for the Matrix class
+        Args:
+            row: None or row coordinate
+            col: None or column coordinate
+        Returns:
+            Element, Matrix, row or column
+        Raises:
+            InvalidDimension: row or col out of bounds
+        """
+        if (row != None and (row < 0 or row >= self.__rows)) or (col != None and (col < 0 or col >= self.__cols)):
             raise InvalidDimension
         if row != None and col != None:
             return self.__matrix[row][col]
@@ -25,6 +39,18 @@ class Matrix:
             return self.__matrix
 
     def __setitem__(self, value, row = None, col = None):
+        """
+        Setter for the Matrix class
+        Args:
+            value: Matrix, 2D list, row, column or element
+            row: None or row coordinate
+            col: None or column coordinate
+        Returns:
+            None
+        Raises:
+            InvalidDimension: row or col out of bounds, differing value dimension
+            TypeError: not rational, not 2D list
+        """
         if row != None and (row < 0 or row >= self.__rows):
             raise InvalidDimension
         if col != None and (col < 0 or col >= self.__cols):
@@ -71,6 +97,16 @@ class Matrix:
                 raise InvalidDimension
 
     def __delitem__(self, row = None, col = None):
+        """
+        Deleter of rows or columns for the Matrix class
+        Args:
+            row: None or row coordinate
+            col: None or column coordinate
+        Returns:
+            None
+        Raises:
+            InvalidDimension: row or col out of bounds
+        """
         if row != None and (row < 0 or row >= self.__rows):
             raise InvalidDimension
         if col != None and (col < 0 or col >= self.__cols):
@@ -88,12 +124,28 @@ class Matrix:
             raise ValueError
 
     def __contains__(self, value):
+        """
+        Container for a Matrix class
+        Args:
+            value: element
+        Returns:
+            True or False
+        Raises:
+            TypeError: not rational
+        """
         if isinstance(value, Rational):
             return any(self.__matrix[i][j] == value for i in range(self.__rows) for j in range(self.__cols))
         else:
             raise TypeError
 
     def __eq__(self, other):
+        """
+        Comparator for the Matrix class
+        Args:
+            other: Matrix or 2D list
+        Returns:
+            True or False
+        """
         if isinstance(other, Matrix) and self.__rows == other.__rows and self.__cols == other.__cols:
             for i in range(self.__rows):
                 for j in range(self.__cols):
@@ -112,5 +164,10 @@ class Matrix:
         return True
 
     def __repr__(self):
+        """
+        Representative method for the Matrix class
+        Returns:
+             string representation of Matrix
+        """
         top = max(len(str(self.__matrix[i][j])) for i in range(self.__rows) for j in range(self.__cols))
         return "\n".join(["| " + " ".join([str(i).ljust(top) for i in self.__matrix[j]]) + " |" for j in range(self.__rows)])
