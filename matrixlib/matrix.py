@@ -1,5 +1,7 @@
 from numbers import Rational
-from .exceptions import *
+from fractions import Fraction
+from random import choice
+from matrixlib.exceptions import *
 
 class Matrix:
 
@@ -162,6 +164,23 @@ class Matrix:
                 if self.__matrix[i][j] != other[i][j]:
                     return False
         return True
+
+    def __rand__(self, start : int = -10, stop : int = 10):
+        """
+        Random matrix generator method for the Matrix class
+        Args:
+            start: -10(default), integer
+            stop: 10(default), integer
+        Returns:
+            Matrix of given dimensions with elements in form of Fraction(...,...)
+        """
+        for i in range(self.__rows):
+            for j in range(self.__cols):
+                r = list(range(start, stop))
+                a = choice(r)
+                r.remove(0)
+                b = choice(r)
+                self.__matrix[i][j] = Fraction(a, b)
 
     def __repr__(self):
         """
