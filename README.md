@@ -61,6 +61,8 @@
 ### Changelog
 
 * 0.2.0
+    * Fixed bugs
+    * Added numpy validation, samples, tests
     * Updated import, added docstrings
     * Updated README
     * Added Matrix, Operations classes
