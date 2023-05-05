@@ -5,7 +5,8 @@
 ### Table of Contents
 
 * [Description](#description)
-* [Features and Usage](#features-and-usage)
+* [Features](#features)
+* [Usage](#usage)
 * [How to Install and Run](#how-to-install-and-run)
 * [Testing](#testing)
 * [Validation using Numpy](#validation-using-numpy)
@@ -27,7 +28,7 @@
 > diverse computations ranging from simple addition, multiplication, transposition, ... to more advanced operations such as 
 > determinants, solving systems of linear equations up to, for example, finding matrix inverses or applying the method of least squares.
 
-### Features and Usage
+### Features
 
 ##### Logical design
 
@@ -52,11 +53,54 @@
 > The library also uses NumPy for validation, checking the correctness of its results by comparing them 
 > against the resuts obtained using NumPy functions.
 
+### Usage
+
+##### Matrix operations
+
+* Negation
+* Addition
+* Subtraction
+* Multiplication
+* Transposition
+* Multiplication
+* Scalar multiplication
+* ... and more
+
+##### Methods of linear algebra
+
+* Solver of systems of linear equations
+* Determinant
+* Matrix inverter
+* Dot product
+* Method of least squares
+* ... and more
+
 ### How to Install and Run
+
+```
+pip install matrixlib
+```
+
+```
+import matrixlib
+```
 
 ### Testing
 
 ### Validation using Numpy
+
+> The "matrix-library" package underwent extensive testing to validate its functionality
+> and accuracy, which involved comparing its matrix operations and methods of linear algebra
+> to those of Numpy. During testing (done by UnitTest), various unit tests
+> were performed to verify the correctness of individual functions and methods.
+> 
+> During testing using UnitTest, various objective tests were performed on randomly
+> generated matrices (random number of rows, columns and random elements) to at least 
+> guarantee the same precision as the numpy library offers. 
+> 
+> Furthermore, performace tests were conducted to measure the execution time of the "matrix-library" package's 
+> operations on large sparse matrices, and these tests were compared to Numpy's equivalent operations to verify correctness
+> of the methods.
 
 ### Changelog
 

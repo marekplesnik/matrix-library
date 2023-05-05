@@ -191,6 +191,10 @@ class Operations(Matrix):
         a = Operations.validate(a)
         if a._Matrix__rows != a._Matrix__cols:
             raise Undefined
+        if a._Matrix__rows == 1:
+            return a._Matrix__matrix[0][0]
+        if a._Matrix__rows == 2:
+            return (a._Matrix__matrix[0][0]*a._Matrix__matrix[1][1] - a._Matrix__matrix[0][1]*a._Matrix__matrix[1][0])
         d, t = 1, 1
         for i in range(a._Matrix__rows):
             if a._Matrix__matrix[i][i] == 0:

@@ -17,7 +17,14 @@ class TestMatrix(unittest.TestCase):
             x.__getitem__(0,x._Matrix__cols)
 
     def test_setter(self):
-        pass
+        x = ml.Matrix(randint(1, 10), randint(1, 10))
+        with self.assertRaises(InvalidDimension):
+            x.__setitem__([0 for i in range(x._Matrix__cols)],-1)
+            x.__setitem__([[0] for i in range(x._Matrix__rows)],None,x._Matrix__cols)
+            x.__setitem__([0 for i in range(x._Matrix__cols+1)],1)
+            x.__setitem__([[0] for i in range(x._Matrix__rows+1)],None,1)
+        with self.assertRaises(TypeError):
+            x.__setitem__("siuuu",1,1)
 
     def test_deleter(self):
         pass
