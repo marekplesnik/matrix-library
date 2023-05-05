@@ -1,6 +1,6 @@
-from .matrix import *
-from .operations import *
-from .exceptions import *
+from matrixlib.matrix import *
+from matrixlib.operations import *
+from matrixlib.exceptions import *
 
 
 def validate(a): return Operations.validate(a)

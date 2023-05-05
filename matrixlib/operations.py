@@ -208,7 +208,7 @@ class Operations(Matrix):
                     a._Matrix__matrix[j][l] -= k * a._Matrix__matrix[i][l]
         for i in range(a._Matrix__rows):
             d *= a._Matrix__matrix[i][i]
-        return d
+        return d*t
 
     @classmethod
     def inverse_matrix(cls, a, out = False):
@@ -226,11 +226,11 @@ class Operations(Matrix):
         a = Operations.validate(a)
         if a._Matrix__rows != a._Matrix__cols:
             raise InvalidDimension
-        if Operations.det(deepcopy(a)) == 0:
+        if Operations.determinant(deepcopy(a)) == 0:
             raise ZeroDeterminant
         b = Matrix(a._Matrix__rows, a._Matrix__rows)
         for i in range(a._Matrix__rows):
-            b.__setitem__(Operations.lin_solve(deepcopy(a), [[1] if j==i else [0] for j in range(a._Matrix__rows)]), None, i)
+            b.__setitem__(Operations.linear_solve(deepcopy(a), [[1] if j==i else [0] for j in range(a._Matrix__rows)]), None, i)
         return b._Matrix__matrix if not out else b
 
     @classmethod
@@ -293,10 +293,8 @@ class Operations(Matrix):
         b = Operations.validate(b)
         if a._Matrix__rows != b._Matrix__rows or b._Matrix__cols != 1:
             raise InvalidDimension
-        c = Operations.tpose(deepcopy(a), True)
-        d = Operations.mul(c,a,True)
-        print(d._Matrix__matrix)
-        e = Operations.mul(c,b,True)
-        print(e._Matrix__matrix)
-        f = Operations.lin_solve(d._Matrix__matrix,e._Matrix__matrix)
+        c = Operations.transposition(deepcopy(a), True)
+        d = Operations.multiplication(c,a,True)
+        e = Operations.multiplication(c,b,True)
+        f = Operations.linear_solve(d._Matrix__matrix,e._Matrix__matrix, True)
         return f._Matrix__matrix if not out else f
