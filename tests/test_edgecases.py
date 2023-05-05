@@ -1,7 +1,7 @@
 import unittest
 import matrixlib as ml
 
-class TestOperations(unittest.TestCase):
+class TestEdgeCases(unittest.TestCase):
     pass
 
 if __name__ == '__main__':

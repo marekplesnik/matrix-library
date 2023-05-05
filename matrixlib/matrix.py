@@ -13,7 +13,11 @@ class Matrix:
             __cols: number of matrix's columns
         Returns:
             None
+        Raises:
+            InvalidDimension: if either there aren't any rows or columns
         """
+        if __rows <= 0 or __cols <= 0:
+            raise InvalidDimension
         self.__rows = __rows
         self.__cols = __cols
         self.__matrix = [[0 for i in range(__cols)] for j in range(__rows)]
