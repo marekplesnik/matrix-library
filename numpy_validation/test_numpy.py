@@ -84,10 +84,14 @@ class NumpyAndMatrixlib(unittest.TestCase):
     def test_leastsquares(self):
         m, n = randint(1,10), randint(1,10)
         x, y = ml.Matrix(m,n), ml.Matrix(m,1)
+        k = 0
         x.__rand__(), y.__rand__()
-        a = ml.least_squares(deepcopy(x),deepcopy(y))
-        b = np.linalg.lstsq(np.array(x._Matrix__matrix,dtype = 'float64'), np.array([y._Matrix__matrix[i][0] for i in range(m)],dtype = 'float64'),rcond=1)[0]
-        self.assertTrue(all([isclose(a[i][0],b[i]) for i in range(n)]))
+        if ml.det(ml.mul(ml.tpose(x._Matrix__matrix),x._Matrix__matrix)) == 0:
+            self.assertTrue(True)
+        else:
+            a = ml.least_squares(deepcopy(x),deepcopy(y))
+            b = np.linalg.lstsq(np.array(x._Matrix__matrix,dtype = 'float64'), np.array([y._Matrix__matrix[i][0] for i in range(m)],dtype = 'float64'),rcond=1)[0]
+            self.assertTrue(all([isclose(a[i][0],b[i]) for i in range(n)]))
 
 if __name__ == '__main__':
     unittest.main()

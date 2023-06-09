@@ -283,13 +283,13 @@ class Operations(Matrix):
     @classmethod
     def least_squares(cls, a, b, out = False):
         """
-        Method for calculating approximate solution using least squares
+        Method for calculating approximate solution using the least squares
         Args:
             a: Matrix object, 2D list
             b: Matrix object, 2D list
             out: False(default), True
         Returns:
-            f: Matrix object if out == True, 2D list if out == False ... vector of solution of least squares between a and b
+            f: Matrix object if out == True, 2D list if out == False ... vector of solution of the least squares between a and b
         Raises:
             InvalidDimension: differing dimension, b not vector
         """
