@@ -1,4 +1,4 @@
-## matrix-library (user documentation)
+## matrix-library
 
 > Python 3.10 package for matrices, matrix operations and methods of linear algebra.
 
@@ -6,8 +6,6 @@
 
 * [Description](#description)
 * [Features](#features)
-* [Usage](#usage)
-* [How to Install and Run](#how-to-install-and-run)
 * [Testing](#testing)
 * [Validation using Numpy](#validation-using-numpy)
 * [Changelog](#changelog)
@@ -51,9 +49,7 @@
 ##### Validation using NumPy
 
 > The library also uses NumPy for validation, checking the correctness of its results by comparing them 
-> against the resuts obtained using NumPy functions.
-
-### Usage
+> against the results obtained using NumPy functions.
 
 ##### Matrix operations
 
@@ -72,18 +68,8 @@
 * Determinant
 * Matrix inverter
 * Dot product
-* Method of least squares
+* Method of the least squares
 * ... and more
-
-### How to Install and Run
-
-```
-pip install matrixlib
-```
-
-```
-import matrixlib
-```
 
 ### Testing
 
@@ -98,18 +84,18 @@ import matrixlib
 > generated matrices (random number of rows, columns and random elements) to at least 
 > guarantee the same precision as the numpy library offers. 
 > 
-> Furthermore, performace tests were conducted to measure the execution time of the "matrix-library" package's 
+> Furthermore, performance tests were conducted to measure the execution time of the "matrix-library" package's 
 > operations on large sparse matrices, and these tests were compared to Numpy's equivalent operations to verify correctness
 > of the methods.
 
 ### Changelog
 
 * 0.2.0
-    * Fixed bugs
-    * Added numpy validation, samples, tests
-    * Updated import, added docstrings
-    * Updated README
-    * Added Matrix, Operations classes
+  * Fixed bugs
+  * Added numpy validation, samples, tests
+  * Updated import, added docstrings
+  * Updated README
+  * Added Matrix, Operations classes
     
 * 0.1.0
   * Added README, .gitignore, tests, ...
