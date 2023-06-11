@@ -6,7 +6,6 @@
 
 * [Description](#description)
 * [Features](#features)
-* [Testing](#testing)
 * [Validation using Numpy](#validation-using-numpy)
 * [Changelog](#changelog)
 
@@ -70,8 +69,6 @@
 * Dot product
 * Method of the least squares
 * ... and more
-
-### Testing
 
 ### Validation using Numpy
 
