@@ -73,7 +73,8 @@ matrix = matrix.__getitem__(None, None) # return original matrix in list format
 #### Modifying elements, row, column or entire matrix
 
 > You can modify elements, row, column or entire matrix using the `__setitem__` method. Pass the value (either number,
->  row list, column list or matrix list) and the row (optional) and column (optional) coordinates.
+>  row list, column list or matrix list) and the row (optional) and column (optional) coordinates. Let `matrix = matrixlib.Matrix(rows, cols)` 
+> be an object of the **Matrix** class.
 
 ```
 matrix.__setitem__(value, row, col) # value must be of type number and the element at position row and col is set to value
@@ -95,17 +96,113 @@ matrix.__setitem__([[0,0,0,0],[0,0,0,0],[0,0,0,0]], None, None) # sets the matri
 
 #### Deleting row or column
 
+> You can delete rows or columns from a matrix using the `__delitem__` method. Pass the row or column coordinate (optional)
+> to delete specific rows or columns. Let `matrix = matrixlib.Matrix(rows, cols)` be an object of the **Matrix** class.
+
+```
+matrix.__delitem__(row, None) # deletes the row with coordinate of row
+matrix.__delitem__(None, col) # deletes the column with coordinate of col
+```
+
+##### Example:
+
+> Let `matrix = matrixlib.Matrix(3, 3)` be a matrix with values `[[1,2,3],[4,5,6],[7,8,9]]`.
+
+```
+matrix.__delitem__(1, None) # would return [[1,2,3],[7,8,9]]
+matrix.__delitem__(None, 0) # would return [[2,3],[5,6],[8,9]]
+```
+
 #### Checking containment
+
+> You can check whether a specific value is present in the matrix using the `__contains__` method.
+> Pass the value (number) to check for containment. Let `matrix = matrixlib.Matrix(rows, cols)` be an object of the **Matrix** class.
+
+```
+matrix.__contains__(value) # returns true if value is present, false if isn't
+```
+
+##### Example:
+
+> Let `matrix = matrixlib.Matrix(3, 4)` be a matrix with values `[[1,2,3,4],[5,6,7,8],[9,10,11,12]]`.
+
+```
+matrix.__contains__(11) # return True, 11 is at position 2 and 2
+matrix.__contains__(144) # return False, 144 isn't in the matrix
+```
 
 #### Comparing two matrices
 
+> You can compare two matrices for equality using the `__eq__` method. Pass 
+> the other matrix (either object of **Matrix** class or matrix list) to compare.
+> Let `matrix = matrixlib.Matrix(rows, cols)` be an object of the **Matrix** class.
+> Let `other = matrixlib.Matrix(rows, cols)` be an object of the **Matrix** class or 
+> other is matrix list of dimensions rows and cols.
+
+```
+matrix.__eq__(other) # returns True if matrix == other, false if matrix != other
+```
+
+##### Example:
+
+> Let `matrix = matrixlib.Matrix(3, 3)` be a matrix with values `[[1,2,3],[4,5,6],[7,8,9]]`.
+
+```
+other1 = matrixlib.Matrix(3, 3)` be a matrix with values `[[1,2,3],[4,5,6],[7,8,9]]`
+other_list1 = [[1,2,3],[4,5,6],[7,8,9]]
+other2 = matrixlib.Matrix(3, 3)` be a matrix with values `[[0,0,0],[0,0,0],[0,0,0]]`
+other_list2 = [[0,0,0],[0,0,0],[0,0,0]]
+```
+
+```
+matrix.__eq__(other1) # returns True
+matrix.__eq__(other_list1) # returns True
+matrix.__eq__(other2) # returns False
+matrix.__eq__(other_list2) # returns False
+```
+
 #### Generating random matrix
+
+> You can generate a random matrix with fractional elements using the `__rand__` method. 
+> Using optional arguments start, stop you can set the range of generated fraction(a,b), where
+> start <= a <= stop and start <= b <= stop. Let `matrix = matrixlib.Matrix(rows, cols)` be an 
+> object of the **Matrix** class.
+
+```
+matrix.__rand__(start, stop) # randomly fills the matrix elements
+```
+
+##### Example:
+
+> Let `matrix = matrixlib.Matrix(3, 4)` be an object of the **Matrix** class.
+
+```
+matrix.__rand__() # would return "for example" [[-9/7,5/9,-4/5,1],[-5/6,-5/6,-1,1],[-4,-7/9,-7/6,-2]]
+```
 
 #### String representation
 
+> You can represent a matrix with the provided string representation `__repr__` method. It returns
+> a formatted string representation representing the matrix in a readable format.
+> Let `matrix = matrixlib.Matrix(rows, cols)` be an object of the **Matrix** class.
 
+```
+string = matrix.__repr__() # returns the formatted string matrix representation of the matrix
+```
 
+##### Example:
 
+> Let `matrix = matrixlib.Matrix(3, 4)` be a matrix with values `[[-9/7,5/9,-4/5,1],[-5/6,-5/6,-1,1],[-4,-7/9,-7/6,-2]]`.
+
+```
+string = matrix.__repr__() # string would output the following
+```
+
+```
+| -9/7 5/9  -4/5 1    |
+| -5/6 -5/6 -1   1    |
+| -4   -7/9 -7/6 -2   |
+```
 
 ### Operations
 
