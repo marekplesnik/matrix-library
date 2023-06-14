@@ -434,7 +434,7 @@ dot_product = matrixlib.dot(a, b) # returns dot product of a and b with value of
 > of rows by cols and a matrix list or object of **Matrix** class `b` with dimensions of rows by 1. The optional parameter `out` 
 > specifies whether to return a matrix list (out = False) or return a **Matrix** object (out = True).
 
-> Product of matrices `transposed a` and `a` must be regular.
+> Product of matrices `transposed a` and `a` must be regular or equivalently matrix `a` must have lineary independent columns.
 
 ```
 solution = matrixlib.least_squares(a, b, out = False) # returns the solution of the least squares regression in matrix list output format
