@@ -206,4 +206,233 @@ string = matrix.__repr__() # string would output the following
 
 ### Operations
 
+#### Validate
+
+> Operation `validate(a)` is used to validate if an object is of type **Matrix** or if matrix list
+> meets the criteria to be an object of **Matrix**. Pass the **Matrix** or matrix list `a` as argument.
+> Returns **Matrix** object of the matrix list or the original **Matrix** argument.
+> Let a = matrixlib.Matrix(rows, cols).
+
+```
+matrix = matrixlib.validate(a)
+```
+
+##### Example:
+
+> Let `a = matrixlib.Matrix(3, 3)` be a matrix with values `[[1,2,3],[4,5,6],[7,8,9]]`. 
+> Let `a_list = [[1,2,3],[4,5,6],[7,8,9]]`. Let `b_list = [[1,2,3],[d,e,f],[7,8,9]]`.
+
+```
+matrix = matrixlib.validate(a) # returns the original object
+matrix_a = matrixlib.validate(a_list) # returns a Matrix object with values of a_list
+```
+
+#### Negation
+
+> Operation `neg(a, out = False)` performs matrix negation on a matrix `a`. The input 
+> parameter `a` may be **Matrix** object or a matrix list. The optional parameter `out` 
+> specifies whether to return a matrix list (out = False) or return a **Matrix** object (out = True).
+> Returns the negated matrix. Let a = matrixlib.Matrix(rows, cols).
+
+```
+matrix = matrixlib.neg(a, out = False) # returns the negated matrix a in matrix list output format
+```
+
+##### Example:
+
+> Let `a = matrixlib.Matrix(3, 3)` be a matrix with values `[[1,2,3],[4,5,6],[7,8,9]]`.
+
+```
+matrix = matrixlib.neg(a) # returns a matrix list with values [[-1,-2,-3],[-4,-5,-6],[-7,-8,-9]]
+```
+
+#### Addition
+
+> The operation `add(a, b, out = False)` is used to perform matrix addition between matrices
+> `a` and `b`. The input parameters `a` and `b` may be matrix lists or **Matrix** objects of same dimensions.
+> The optional parameter `out` specifies whether to return a matrix list (out = False) or 
+> return a **Matrix** object (out = True). It returns the sum of matrices `a` and `b`.
+> Let a = matrixlib.Matrix(rows, cols) and b = matrixlib.Matrix(rows, cols).
+
+```
+matrix = matrixlib.add(a, b, out = False) # returns the sum of matrices a and b in a matrix list output format
+```
+
+##### Example:
+
+> Let `a = matrixlib.Matrix(3, 3)` be a matrix with values `[[1,2,3],[4,5,6],[7,8,9]]` and 
+> `b = matrixlib.Matrix(3,3)` be a matrix with values `[[1,2,3],[4,5,6],[7,8,9]]`.
+
+```
+matrix = matrixlib.add(a, b, out = False) # returns a matrix list with values [[2,4,6],[8,10,12],[14,16,18]].
+```
+
+#### Subtraction
+
+> Matrix subtraction between matrices `a` and `b` is performed by operation
+> `sub(a, b, out = False)`. The input parameters `a` and `b` may be matrix 
+> lists or **Matrix** objects of same dimensions. The optional parameter `out` 
+> specifies whether to return a matrix list (out = False) or return a **Matrix** 
+> object (out = True). It returns the difference of matrices `a` and `b`.
+> Let a = matrixlib.Matrix(rows, cols) and b = matrixlib.Matrix(rows, cols).
+
+
+```
+matrix = matrixlib.sub(a, b, out = False) # returns matrix a subtracted from b
+```
+
+##### Example:
+
+> Let `a = matrixlib.Matrix(3, 3)` be a matrix with values `[[1,2,3],[4,5,6],[7,8,9]]` and 
+> `b = matrixlib.Matrix(3,3)` be a matrix with values `[[1,2,3],[4,5,6],[7,8,9]]`.
+
+```
+matrix = matrixlib.sub(a, b, out = False) # returns a matrix list with values [[0,0,0],[0,0,0],[0,0,0]]
+```
+
+#### Transposition
+
+> The operation `tpose(a, out = False)` transposes matrix `a`. The input parameter `a` 
+> may be a matrix list or a **Matrix** object. The optional parameter `out` 
+> specifies whether to return a matrix list (out = False) or return a **Matrix** 
+> object (out = True). Let a = matrixlib.Matrix(rows, cols). 
+
+```
+matrix = matrixlib.tpose(a, out = False) # returns matrix transposition of a in matrix list output format
+```
+
+##### Example:
+
+> Let `a = matrixlib.Matrix(3, 3)` be a matrix with values `[[1,1,1],[0,1,1],[0,0,1]]`.
+
+```
+matrix = matrixlib.tpose(a, out = False) # returns a matrix list with values [[1,0,0],[1,1,0],[1,1,1]]
+```
+
+#### Multiplication
+
+> 
+
+```
+
+```
+
+##### Example:
+
+>
+
+```
+
+```
+
+#### System of linear equations solver
+
+> 
+
+```
+
+```
+
+##### Example:
+
+>
+
+```
+
+```
+
+#### Determinant
+
+> 
+
+```
+
+```
+
+##### Example:
+
+>
+
+```
+
+```
+
+#### Matrix inverter
+
+> 
+
+```
+
+```
+
+##### Example:
+
+>
+
+```
+
+```
+
+#### Scalar multiplication
+
+> 
+
+```
+
+```
+
+##### Example:
+
+>
+
+```
+
+```
+
+#### Dot product
+
+> 
+
+```
+
+```
+
+##### Example:
+
+>
+
+```
+
+```
+
+#### Method of the least squares
+
+> 
+
+```
+
+```
+
+##### Example:
+
+>
+
+```
+
+```
+
 ### Error and Exception handling
+
+> 
+
+```
+
+```
+
+##### Example:
+
+>
+
+```
+
+```
