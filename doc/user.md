@@ -311,50 +311,63 @@ matrix = matrixlib.tpose(a, out = False) # returns a matrix list with values [[1
 
 #### Multiplication
 
-> 
+> The operation `mul(a, b, out = False)` performs matrix multiplication between matrices `a` and `b`.
+> The input parameter `a` may be a matrix list or a **Matrix** object of dimensions m by n and `b` may be 
+> a matrix list or a **Matrix** object of dimensions n by p. The optional parameter `out` 
+> specifies whether to return a matrix list (out = False) or return a **Matrix** 
+> object (out = True). It returns the product of matrices `a` and `b`. Let `a = matrixlib.Matrix(m, n)` and `b = matrixlib.Matrix(n, p)`.
 
 ```
-
+matrix = matrixlib.mul(a, b, out = False) # returns a matrix list representing the product of a and b
 ```
 
 ##### Example:
 
->
+> Let `a = matrixlib.Matrix(3, 2)` be a matrix with values `[[1,1],[0,1],[0,1]]` and 
+> `b = matrixlib.Matrix(2,2)` be a matrix with values `[[1,1],[0,1]]`.
 
 ```
-
+matrix = matrixlib.mul(a, b, out = False) # returns a matrix list with values [[1,2],[0,1],[0,1]]
 ```
 
 #### System of linear equations solver
 
-> 
+> This operation `lin_sol(a, b, out = False)` solves a system of linear equations represented by a matrix list
+> or **Matrix** object `a` of dimensions m by n and `b` a matrix list or a **Matrix** object of dimensions
+> m by 1. The optional parameter `out` specifies whether to return a matrix list (out = False) or return a **Matrix** 
+> object (out = True). It returns the solution matrix of dimensions n by 1. Let `a = matrixlib.Matrix(n, n)` and 
+> `b = matrixlib.Matrix(n, 1)`.
+
+> Matrix list or **Matrix** object `a` must be a regular matrix.
 
 ```
-
+matrix = matrixlib.lin_sol(a, b, out = False) # returns the solution matrix of dimensions n by 1
 ```
 
 ##### Example:
 
->
+> Let `a = matrixlib.Matrix(3,3)` be a matrix with values `[[1,2,3],[1,0,1],[0,0,1]]` and
+> `b = matrixlib.Matrix(3,1)` be a matrix with values `[[32],[10],[8]]`.
 
 ```
-
+matrix = matrixlib.lin_sol(a, b, out = False) # returns a matrix list with values [[2],[3],[8]]
 ```
 
 #### Determinant
 
-> 
+> The operation `det(a)` calculates the determinant of square matrix list or square **Matrix** object `a`.
+> It returns a number representing its determinant. Let `a = matrixlib.Matrix(rows, rows)`.
 
 ```
-
+determinant = matrixlib.det(a) # returns the determinant of matrix a
 ```
 
 ##### Example:
 
->
+> Let `a = matrixlib.Matrix(5,5)` be a matrix with values `[[0,1,0,-2,1],[1,0,3,1,1],[1,-1,1,1,1],[2,2,1,0,1],[3,1,1,1,2]]`.
 
 ```
-
+determinant = matrixlib.det(a) # returns 4
 ```
 
 #### Matrix inverter
@@ -422,17 +435,3 @@ matrix = matrixlib.tpose(a, out = False) # returns a matrix list with values [[1
 ```
 
 ### Error and Exception handling
-
-> 
-
-```
-
-```
-
-##### Example:
-
->
-
-```
-
-```
