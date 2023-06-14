@@ -372,66 +372,81 @@ determinant = matrixlib.det(a) # returns 4
 
 #### Matrix inverter
 
-> 
+> The `inverse(a, out = False)` operation calculates the inverse of a regular matrix `a` 
+> that may be a matrix list or an object of **Matrix** class. The optional parameter `out` 
+> specifies whether to return a matrix list (out = False) or return a **Matrix** object (out = True). 
+> Let `a = matrixlib.Matrix(rows, rows)` and a is regular.
 
 ```
-
+matrix = matrixlib.inverse(a, out = False) # returns the inverse matrix of a in matrix list output format
 ```
 
 ##### Example:
 
->
+> Let `a = matrixlib.Matrix(3,3)` be a matrix with values `[[1,2,3],[2,3,4],[4,2,1]]`.
 
 ```
-
+matrix = matrixlib.inverse(a, out = False) # returns the inverse matrix of a with values [[5,-4,1],[-14,11,-2],[8,-6,1]]
 ```
 
 #### Scalar multiplication
 
-> 
+> Scalar multiplication `sc_mul(a, x, out = False)` performs scalar multiplication 
+> on matrix list or a **Matrix** object `a` with scalar value `x`. The optional parameter `out` 
+> specifies whether to return a matrix list (out = False) or return a **Matrix** object (out = True).
+> Let `a = matrixlib.Matrix(rows, cols)` and `x` is rational.
 
 ```
-
+matrix = matrixlib.sc_mul(a, x, out = False) # returns a matrix created by multiplying matrix a by x
 ```
 
 ##### Example:
 
->
+> Let `a = matrixlib.Matrix(3,3)` be a matrix with values `[[1,2,3],[-1,0,1],[-18,-19,-20]]` and `x = -1`.
 
 ```
-
+matrix = matrixlib.sc_mul(a, x, out = False) # returns matrix with values [[-1, -2, -3], [1, 0, -1], [18, 19, 20]]
 ```
 
 #### Dot product
 
-> 
+> The `dot(a, b)` operation calculates the "standard" dot product between vectors `a` and `b`. The arguments `a` and `b`
+>  may be matrix lists or objects of **Matrix** class of dimensions n by 1. It returns a number representing the
+> dot product between these two vectors. Let `a = matrixlib.Matrix(n, 1)` and `b = matrixlib.Matrix(n, 1)`. 
 
 ```
-
+dot_product = matrixlib.dot(a, b) # returns dot product between a and b
 ```
 
 ##### Example:
 
->
+> Let `a = matrixlib.Matrix(3,1)` be a matrix with values `[[2],[7],[1]]` and 
+> `b = matrixlib.Matrix(3,1)` be a matrix with values `[[8],[2],[8]]`.
 
 ```
-
+dot_product = matrixlib.dot(a, b) # returns dot product of a and b with value of 38
 ```
 
 #### Method of the least squares
 
-> 
+> The `least_squares(a, b, out = False)` operation performs the least squares regression on a 
+> matrix `a` and vector `b`. The parameters are a matrix list or a **Matrix** object `a` with dimensions
+> of rows by cols and a matrix list or object of **Matrix** class `b` with dimensions of rows by 1. The optional parameter `out` 
+> specifies whether to return a matrix list (out = False) or return a **Matrix** object (out = True).
+
+> Product of matrices `transposed a` and `a` must be regular.
 
 ```
-
+solution = matrixlib.least_squares(a, b, out = False) # returns the solution of the least squares regression in matrix list output format
 ```
 
 ##### Example:
 
->
+> Let `a = matrixlib.Matrix(3,2)` be a matrix with values `[[2,1],[1,2],[1,1]]` and
+> `b = matrixlib.Matrix(3,1)` be a matrix with values `[[0],[-2],[3]]`.
 
 ```
-
+solution = matrixlib.least_squares(a, b, out = False) # returns the solution of the least squares or a matrix list with values [[1],[-1]]
 ```
 
 ### Error and Exception handling
