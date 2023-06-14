@@ -88,6 +88,7 @@
 ### Changelog
 
 * 0.2.0
+  * Added documentation
   * Fixed bugs
   * Added numpy validation, samples, tests
   * Updated import, added docstrings
