@@ -7,7 +7,6 @@
 * [Description](#description)
 * [Features](#features)
 * [Validation using Numpy](#validation-using-numpy)
-* [Matrix operations and methods of linear algebra](#matrix-operations-and-methods-of-linear-algebra)
 * [Changelog](#changelog)
 
 ### Description
@@ -44,36 +43,31 @@
 
 > It also includes a suite of unit tests to ensure the correctness and reliability 
 > of its operations. These tests are designed to include all the package's functionalities, 
-> cover potential errors or testing edge cases. The library also uses NumPy for validation, checking the correctness of its results by comparing them 
-> against the results obtained using NumPy functions.
+> cover potential errors or testing edge cases.
 
-### Matrix operations and methods of linear algebra
+##### Validation using NumPy
+
+> The library also uses NumPy for validation, checking the correctness of its results by comparing them 
+> against the results obtained using NumPy functions.
 
 ##### Matrix operations
 
-* Constructor
-* Accessing or modifying elements, rows, columns or entire matrix
-* Deleter of rows or columns
-* Checking containment or comparison between matrices
-* String and object representation
-* Random matrix generator and diagonal (unitary) generator
-* Matrix validation and instance checkup
+* Negation
+* Addition
+* Subtraction
+* Multiplication
+* Transposition
+* Multiplication
+* Scalar multiplication
 * ... and more
 
 ##### Methods of linear algebra
 
-* Negation '-'
-* Addition '+'
-* Subtraction '-'
-* Multiplication '@'
-* Scalar multiplication '*'
-* Exponentiation '**'
-* Transposition '..**"t"'
-* Matrix inverter '..**(-1)'
-* Dot product '*'
-* Solver of systems of linear equations (non-parameterized)
+* Solver of systems of linear equations
 * Determinant
-* Least squares regression
+* Matrix inverter
+* Dot product
+* Method of the least squares
 * ... and more
 
 ### Validation using Numpy
@@ -92,11 +86,6 @@
 > of the methods.
 
 ### Changelog
-
-* 0.3.0
-  * Restructured package
-  * Updated README, documentation
-  * Updated matrixlib/matrix.py
 
 * 0.2.0
   * Added documentation
