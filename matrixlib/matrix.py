@@ -203,7 +203,7 @@ class Matrix(metaclass=MatrixMeta):
         Returns:
             True or False
         """
-        if isinstance(other, Matrix) and self.__rows == other.__rows and self.__cols == other.__cols:
+        if isinstance(other, Matrix) and not isinstance(other, list) and self.__rows == other.__rows and self.__cols == other.__cols:
             for i in range(self.__rows):
                 for j in range(self.__cols):
                     if self.__matrix[i][j] != other._Matrix__matrix[i][j]:
@@ -441,7 +441,7 @@ class Matrix(metaclass=MatrixMeta):
         elif exponent > 0:
             a = self
             for i in range(1, exponent):
-                self *= a
+                self = self @ a
             return self
 
     def transposition(self): # transposed matrix

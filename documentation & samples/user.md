@@ -30,7 +30,7 @@
   * [Matrix inverter](#matrix-inverter)
   * [Dot product](#dot-product)
   * [Least squares regression](#least-squares-regression)
-* [Error and Exception handling](#error-and-exception-handling)
+* [Error and exception handling](#error-and-exception-handling)
   * [TypeError](#typeerror)
   * [ValueError](#valueerror)
   * [Undefined](#undefined)
