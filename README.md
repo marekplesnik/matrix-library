@@ -6,8 +6,8 @@
 
 * [Description](#description)
 * [Features](#features)
-* [Validation using Numpy](#validation-using-numpy)
 * [Matrix operations and methods of linear algebra](#matrix-operations-and-methods-of-linear-algebra)
+* [Validation using Numpy](#validation-using-numpy)
 * [Changelog](#changelog)
 
 ### Description
